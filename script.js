@@ -92,3 +92,6 @@ async function tampilData(jurusanId, kelasId, warna) {
         tabelBody.appendChild(tr);
     });
 }
+
+/* ================= TOMBOL KEMBALI ================= */
+const backBtn = document.getElementById("backBtn");
