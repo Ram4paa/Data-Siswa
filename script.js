@@ -94,3 +94,6 @@ async function tampilData(jurusanId, kelasId, warna) {
 }
 
 /* ================= TOMBOL KEMBALI ================= */
+const backBtn = document.getElementById("backBtn");
+backBtn.addEventListener("click", () => {
+    detailPanel.classList.add("hidden");
