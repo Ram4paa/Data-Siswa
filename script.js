@@ -94,4 +94,3 @@ async function tampilData(jurusanId, kelasId, warna) {
 }
 
 /* ================= TOMBOL KEMBALI ================= */
-const backBtn = document.getElementById("backBtn");
