@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="/sidebar/layout.css">
+    <link rel="stylesheet" href="/sidebar/sidebar.css">
+    <link rel="stylesheet" href="dash.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        <%- include('../sidebar/sidebar', { active: 'dashboard' }) %>
+
+            <main class="content dashboard" data-aos="zoom-in" data-aos-duration="2000">
+                <div class="greeting-card" data-aos="zoom-in" data-aos-duration="800">
+                    <div class="greeting-text">
+                        <h1 class="greet-slogan">Data Terproteksi, Sistem Terintegrasi</h1>
+                        <h1 class="greet-app">Sistem Informasi Data Siswa</h1>
+                        <p class="greet-desc">
+                            Kelola data siswa, jurusan, dan kelas secara <span id="typing-text"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <%- include('../carousel/car') %>
+                <section id="dashboardContainer" data-aos="zoom-in" data-aos-delay="900" data-aos-duration="800"></section>
+            </main>
+    </div>
+    <div id="jurusanModal" class="modal-overlay" data-aos="zoom-in">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Detail Jurusan</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div id="modalBody" class="modal-body">
+                </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/34b969cc36.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- aos animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow2"></div>
+
+    <div
+      class="container"
+      id="container"
+      data-aos="zoom-in"
+      data-aos-duration="2000"
+    >
+      <!-- register -->
+      <div class="form-container sign_up">
+        <form id="registerForm">
+          <h1>Masuk</h1>
+
+          <div class="social-icons">
+            <a href="https://accounts.google.com" class="icon"
+              ><i class="fa-brands fa-google"></i
+            ></a>
+            <a href="https://instagram.com" class="icon"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://facebook.com" class="icon"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://linkedin.com" class="icon"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </div>
+
+          <span>buat akun baru untuk akses sebagai admin</span>
+
+          <input type="text" id="regUsername" placeholder="Username" required />
+          <input type="email" id="regEmail" placeholder="Email" required />
+          <input
+            type="password"
+            id="regPassword"
+            placeholder="Password"
+            required
+          />
+
+          <button type="submit">Daftar</button>
+        </form>
+      </div>
+
+      <!-- login -->
+      <div class="form-container sign_in">
+        <form id="loginForm">
+          <h1>Log In</h1>
+
+          <div class="social-icons">
+            <a href="https://accounts.google.com" class="icon"
+              ><i class="fa-brands fa-google"></i
+            ></a>
+            <a href="https://instagram.com" class="icon"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://facebook.com" class="icon"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://linkedin.com" class="icon"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </div>
+
+          <span
+            >masukkan username dan password yang sudah terdaftar sebagai
+            admin</span
+          >
+
+          <input
+            type="text"
+            id="loginUsername"
+            placeholder="Masukkan username"
+            required
+          />
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Masukkan Password"
+            required
+          />
+
+          <button type="submit">Masuk</button>
+        </form>
+      </div>
+
+      <!-- toggle -->
+      <div class="toggle_container">
+        <div class="toggle">
+          <div class="toggle-panel toggle_left">
+            <h1>Selamat datang!</h1>
+            <p>Silahkan login untuk mengakses data siswa.</p>
+            <button class="hidden" id="login">Masuk</button>
+          </div>
+
+          <div class="toggle-panel toggle_right">
+            <h1>Selamat datang!</h1>
+            <p>daftarkan akun untuk mengelola sistem data siswa</p>
+            <button class="hidden" id="register">Daftar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="login.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

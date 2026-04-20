@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #ddeefa;
+    color: #0f172a;
+}
+
+/* greeting card */
+.greeting-card {
+    background: linear-gradient(135deg, #1e4bac, #98b9ff);
+    border-radius: 22px;
+    padding: 34px 38px;
+    margin-bottom: 28px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.greeting-card::before {
+    content: "";
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    width: 220px;
+    height: 120px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
+}
+
+.greeting-card::after {
+    content: "";
+    position: absolute;
+    right: 90px;
+    top: 90px;
+    width: 220px;
+    height: 120px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.greet-slogan {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+@keyframes typing {
+    from {
+        width: 0ch;
+    }
+}
+
+.greet-app {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+    font-style: italic;
+    background: linear-gradient(to right, #a3d9ff, #a3d9ff, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+}
+
+.greet-desc {
+    margin-top: 12px;
+    font-size: 20px;
+    color: #ffffff;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .greeting-card {
+        padding: 26px 22px;
+    }
+
+    .greet-slogan,
+    .greet-app {
+        font-size: 24px;
+    }
+}
+
+#typing-text {
+    font-weight: 600;
+    color: #ffffff;
+    /* Warna teks yang mengetik dibuat lebih terang */
+    border-right: 2px solid #ffffff;
+    padding-right: 5px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* konten */
+/* layout */
+.dashboard {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 32px 40px 80px;
+}
+
+/* h1 */
+.dashboard h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.subtitle {
+    margin-top: 6px;
+    margin-bottom: 30px;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.jurusan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.jurusan-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.35));
+}
+
+.jurusan-box { 
+    background: var(--accent);
+    border-radius: 14px;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: all .25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.jurusan-box:hover {
+    transform: translateY(-4px);
+}
+
+.jurusan-box-inner {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-left: 6px;
+}
+
+.jurusan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.jurusan-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.detail-panel {
+    margin-top: 14px;
+    background: transparent;
+    display: none;
+}
+
+.detail-panel.active {
+    display: block;
+}
+
+.detail-panel p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #0f172a;
+    font-weight: 500;
+}
+
+.detail-panel span {
+    font-weight: 700;
+}
+
+/* --- modal card jurusan --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 260px;
+    width: calc(100% - 260px);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: #fff;
+    width: 95%;
+    max-width: 550px;
+    border-radius: 16px;
+    padding: 35px 35px 45px 35px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 100%;
+    background: var(--accent);
+    border-radius: inherit;
+}
+
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1100;
+}
+
+.content.dashboard {
+    margin-left: 260px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.blur-effect {
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(30px) scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* header modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f8fafc;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+#modalTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.modal-list p {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f8fafc;
+    margin: 0;
+    font-size: 15px;
+}
+
+.dropdown {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.dropdown-header {
+    padding: 10px 15px;
+    background: #f8fafc;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.dropdown-body {
+    display: none;
+    padding: 10px 15px;
+    background: #ffffff;
+}
+
+.dropdown-body.show {
+    display: block;
+}
+
+.kelas-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+/* kalau dropdown aktif */
+.dropdown.active .arrow {
+    transform: rotate(90deg);
+}

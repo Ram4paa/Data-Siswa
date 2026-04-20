@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Data Siswa</title>
+    <link rel="stylesheet" href="/sidebar/layout.css">
+    <link rel="stylesheet" href="/sidebar/sidebar.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- aos animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="layout">
+        <%- include('../sidebar/sidebar', { active: 'datasiswa' }) %>
+
+            <main class="content">
+                <div class="carousel-container">
+
+                    <!-- list jurusan -->
+                    <section id="jurusanList">
+                        <div id="jurusanContainer"></div>
+                    </section>
+
+                    <!-- detail jurusan & kelas -->
+                    <section id="detailPanel" class="hidden">
+                        <div class="detail-container">
+                            <!-- card jurusan besar -->
+                            <div class="jurusan-detail" style="flex: 1;">
+                                <div id="activeCard"></div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!-- search & data siswa -->
+                    <div class="data-header hidden" id="searchWrapper">
+                        <div class="header-top">
+                            <div class="left-group">
+                                <h3 id="breadcrumb-text">
+                                    <span class="breadcrumb-item" onclick="kembali()">Informasi Data Siswa</span>
+                                    <span id="sub-breadcrumb"></span>
+                                </h3>
+
+                                <%- include('./p_kls/p_kls') %>
+                            </div>
+
+                            <div class="search-box">
+                                <ion-icon name="search-outline" class="icon-search"></ion-icon>
+                                <input type="text" id="searchInput" placeholder="Cari nama / NIS / NISN">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- tabel data siswa -->
+                    <section id="dataSection" class="data-section">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NIS</th>
+                                    <th>NISN</th>
+                                    <th>Nama</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>No. HP</th>
+                                    <th>Alamat</th>
+                                    <th>Edit/Hapus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelBody"></tbody>
+                        </table>
+                    </section>
+
+                </div>
+            </main>
+    </div>
+
+    <!-- modal hapus -->
+    <div id="confirmHapus" class="hapus hidden">
+        <div class="modal">
+            <div class="modal-icon">🚫</div>
+            <h3 id="modalTitle">Hapus Data Siswa?</h3>
+            <p id="modalDesc">Data yang dihapus tidak bisa dikembalikan.</p>
+
+            <div class="confirm-actions">
+                <button id="btnBatal" class="btn-cancel">Batal</button>
+                <button id="btnYa" class="btn-danger">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- load jurusan -->
+    <script>
+        // ambil dta dri baackend
+        const autoJurusan = "<%= pilihJurusan || '' %>";
+        const autoKelas = "<%= pilihKelas || '' %>";
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            await loadJurusan();
+
+            if (autoJurusan) {
+                const card = document.querySelector(`[data-jurusan-id="${autoJurusan}"]`);
+
+                if (card) {
+                    card.click();
+
+                    const tungguKelas = setInterval(() => {
+                        const btnKelas = document.querySelector(`.kelas-btn[data-id="${autoKelas}"]`);
+
+                        if (btnKelas) {
+                            btnKelas.click();
+                            clearInterval(tungguKelas);
+                        }
+                    }, 100);
+
+                    setTimeout(() => clearInterval(tungguKelas), 3000);
+                }
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    <!-- aos -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 600,
+            once: true,
+            disable: 'mobile'
+        });
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Data Siswa</title>
+
+    <link rel="stylesheet" href="/sidebar/layout.css">
+    <link rel="stylesheet" href="/sidebar/sidebar.css">
+    <link rel="stylesheet" href="style.css">
+    <!--aos animation-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="layout">
+        <%- include('../sidebar/sidebar', { active: 'input' }) %>
+
+            <div class="content" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="container">
+                    <div class="form-card">
+
+                        <div class="header">
+                            <h2>Data Siswa</h2>
+                            <p>Silakan tambahkan data siswa</p>
+                        </div>
+
+                        <form action="/api/siswa" method="POST">
+
+                            <input type="hidden" name="id" value="<%= siswa ? siswa._id : '' %>">
+                            <input type="hidden" name="fromJurusan" value="<%= fromJurusan || '' %>">
+                            <input type="hidden" name="fromKelas" value="<%= fromKelas || '' %>">
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label>NIS</label>
+                                    <input type="text" name="nis" value="<%= siswa ? siswa.nis : '' %>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>NISN</label>
+                                    <input type="text" name="nisn" value="<%= siswa ? siswa.nisn : '' %>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Nama Siswa</label>
+                                    <input type="text" name="nama" value="<%= siswa ? siswa.nama : '' %>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Jenis Kelamin</label>
+                                    <select name="jk">
+                                        <option value="Laki-laki" <%=siswa?.jk==='Laki-laki' ? 'selected' : '' %>>
+                                            Laki-laki
+                                        </option>
+                                        <option value="Perempuan" <%=siswa?.jk==='Perempuan' ? 'selected' : '' %>>
+                                            Perempuan
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Jurusan</label>
+                                    <select name="jurusan" id="jurusanSelect" required>
+                                        <option value="">Jurusan</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Tingkat</label>
+                                    <select id="tingkatSelect" required>
+                                        <option value="">Tingkat</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Rombel</label>
+                                    <select name="kelas" id="kelasSelect" required disabled>
+                                        <option value="">Rombel</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Tanggal Lahir</label>
+                                    <input type="date" name="lahir" value="<%= siswa ? siswa.lahir : '' %>">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>No. HP</label>
+                                    <input type="text" name="nohp" value="<%= siswa ? siswa.nohp : '' %>">
+                                </div>
+
+                                <div class="form-group full">
+                                    <label>Alamat</label>
+                                    <textarea name="alamat"><%= siswa ? siswa.alamat : '' %></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit">Simpan Data</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <script>
+        window.selectedJurusan = "<%= fromJurusan %>";
+        window.selectedKelas = "<%= fromKelas %>";
+    </script>
+
+    <script src="script.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 600,
+            easing: 'ease-out-cubic'
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Kelas</title>
+
+    <link rel="stylesheet" href="/sidebar/layout.css">
+    <link rel="stylesheet" href="/sidebar/sidebar.css">
+    <link rel="stylesheet" href="/data_siswa/tkelas/style.css">
+    <!-- aos animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="layout">
+        <%- include('../sidebar/sidebar', { active: 'kelas' }) %>
+
+        <main class="content" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="container">
+                <div class="form-card">
+                    <div class="header">
+                        <h2>Kelas</h2>
+                        <p>Silakan tambahkan kelas baru</p>
+                    </div>
+
+                    <form action="/api/kelas" method="POST">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="programkeahlianSelect">Program Keahlian</label>
+                                <select name="programkeahlian" id="programkeahlianSelect" required>
+                                    <option value="">Pilih Program Keahlian</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="jurusanSelect">Jurusan</label>
+                                <select name="jurusan" id="jurusanSelect" required disabled>
+                                    <option value="">Pilih Jurusan</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tingkatSelect">Tingkat Kelas</label>
+                                <select name="tingkat" id="tingkatSelect" required>
+                                    <option value="">Pilih Tingkat</option>
+                                    <option value="X">X</option>
+                                    <option value="XI">XI</option>
+                                    <option value="XII">XII</option>
+                                    <option value="XIII">XIII</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dropdownTrigger">Rombel</label>
+                                <input type="hidden" name="rombel" id="rombelInput" required>
+                                <div class="dropdown-rombel">
+                                    <button type="button" id="dropdownTrigger" class="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">Pilih Rombel</button>
+                                    <div id="dropdownMenu" class="dropdown-menu">
+                                        <div class="dropdown-nav">
+                                            <button type="button" id="prevPage" class="nav-arrow">‹</button>
+                                            <div id="pageLabel" class="page-label">A - F</div>
+                                            <button type="button" id="nextPage" class="nav-arrow">›</button>
+                                        </div>
+                                        <div id="rombelItems" class="rombel-grid"></div>
+                                    </div>
+                                </div>
+                                <div id="rombelError" class="form-error" style="display:none;">Pilih rombel.</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="form-message"><%= message || '' %></div>
+                            <button type="submit" class="btn-submit">Simpan Data</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/data_siswa/tkelas/script.js"></script>
+
+</body>
+
+</html>

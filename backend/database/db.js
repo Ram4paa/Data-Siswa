@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/Informasi_Data_Siswa");
+        await mongoose.connect(process.env.MONGO_URI);
         console.log("MongoDB connected");
     } catch (err) {
-        console.error(err);
+        console.error("Koneksi MongoDB gagal:", err.message);
         process.exit(1);
     }
 };

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Jurusan Sekolah</title>
+
+    <link rel="stylesheet" href="/sidebar/layout.css">
+    <link rel="stylesheet" href="/sidebar/sidebar.css">
+    <link rel="stylesheet" href="/data_siswa/tjurusan/style.css">
+    <!--aos animation-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="layout">
+        <%- include('../sidebar/sidebar', { active: active }) %>
+
+            <div class="content" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="container">
+                    <div class="form-card">
+
+                        <div class="header">
+                            <h2>Jurusan</h2>
+                            <p>Silakan tambahkan jurusan</p>
+                        </div>
+
+                        <form action="/api/jurusan" method="POST" enctype="multipart/form-data">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Nama Jurusan</label>
+                                    <input type="text" name="nama" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Program Keahlian</label>
+                                    <select name="programkeahlian" id="programkeahlianSelect" required>
+                                        <option value="">Program Keahlian</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Warna</label>
+                                    <div style="display:flex; gap:10px;">
+                                        <input type="color" id="color1" value="#000">
+                                        <input type="color" id="color2" value="#d3d3d3">
+                                    </div>
+
+                                    <select id="gradientDirection" style="margin-top:10px;">
+                                        <option value="90deg">Horizontal</option>
+                                        <option value="180deg">Vertical</option>
+                                        <option value="45deg">Diagonal</option>
+                                    </select>
+
+                                    <!-- ini yang dikirim ke backend -->
+                                    <input type="hidden" name="warna" id="gradientResult">
+                                    <div id="gradientPreview" style="
+                                        margin-top:10px;
+                                        height:40px;
+                                        border-radius:10px;
+                                        border:1px solid #e5e7eb;
+                                        ">
+                                    </div>
+
+                                    <small id="gradientLabel" class="hint"></small>
+                                    <small class="hint">
+                                        Pilih 2 warna untuk gradient, atau pilih warna yang sama untuk warna solid.
+                                    </small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Logo</label>
+                                    <input type="file" name="logo" accept="image/*" required>
+                                    <small class="hint">Format: JPG, PNG. Gunakan logo tanpa background.</small>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit">Simpan Data</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/data_siswa/tjurusan/script.js"></script>
+</body>
+</html>

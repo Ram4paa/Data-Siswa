@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/carousel/car.css">
+
+<div class="carousel-container">
+    <div class="carousel" id="carousel">
+        <div class="carousel-track">
+            <% listlogo.forEach(j=> { %>
+                <div class="logo-item">
+                    <img src="/data_siswa/img/<%= j.logo %>">
+                </div>
+                <% }); %>
+        </div>
+
+        <div class="carousel-track" aria-hidden="true">
+            <% listlogo.forEach(j=> { %>
+                <div class="logo-item">
+                    <img src="/data_siswa/img/<%= j.logo %>">
+                </div>
+                <% }); %>
+        </div>
+    </div>
+</div>
+
+<script src="/carousel/car.js"></script>

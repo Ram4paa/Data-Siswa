@@ -1,0 +1,107 @@
+body {
+    background: #eaf2ff;
+}
+
+/* Slider Logic */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    position: relative;
+    background: transparent;
+    z-index: 5;
+}
+
+.carousel {
+    display: flex;
+    width: max-content;
+    gap: 60px;
+    animation: scroll 25s linear infinite;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.carousel-container:hover .carousel {
+    animation-play-state: paused;
+}
+
+/* SHADOW KIRI */
+.carousel-container::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 8;
+    background: linear-gradient(to right, 
+        rgb(23, 73, 172) 0%, 
+        rgba(240,245,255,0) 100%);
+}
+
+/* SHADOW KANAN */
+.carousel-container::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 8;
+    background: linear-gradient(to left, 
+        rgb(23, 73, 172) 0%, 
+        rgba(240,245,255,0) 100%);
+}
+
+.logo-item {
+    flex: 0 0 120px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid transparent;
+    border-radius: 18px;
+    background: transparent;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+.logo-item span {
+    font-size: 13px;
+    margin-top: 6px;
+    color: #555;
+}
+
+/* HOVER EFFECT */
+.logo-item:hover {
+    border: 2px solid #3b82f6; /* biru modern */
+    background: rgba(59, 130, 246, 0.05);
+    transform: translateY(-4px);
+}
+
+.logo-item:hover img {
+    transform: scale(1.05);
+}
+/* Auto Scroll */
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}

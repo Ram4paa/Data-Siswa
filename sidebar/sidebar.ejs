@@ -1,0 +1,62 @@
+<aside class="sidebar">
+    <div class="brand">
+        <img src="/data_siswa/img/smk.png" alt="Logo">
+        <span>SMKN 1 CIMAHI</span>
+    </div>
+
+    <nav class="menu">
+        <a href="/dashboard" class="<%= active === 'dashboard' ? 'active' : '' %>">
+            Dashboard
+        </a>
+
+        <div
+            class="menu-group <%= active === 'jurusan' || active === 'kelas' ? 'open' : '' %>">
+            <div class="menu-parent-wrapper">
+                <a href="/data_siswa" class="menu-link <%= active === 'datasiswa' ? 'active' : '' %>">
+                    Data Siswa
+                </a>
+                <button type="button" class="arrow-box">
+                    <span class="arrow">›</span>
+                </button>
+            </div>
+
+            <div class="submenu">
+                <a href="/tjurusan" class="<%= active === 'jurusan' ? 'active' : '' %>">
+                    Tambah Jurusan
+                </a>
+                <a href="/tkelas" class="<%= active === 'kelas' ? 'active' : '' %>">
+                    Tambah Kelas
+                </a>
+            </div>
+        </div>
+
+        <a href="/input" class="<%= active === 'input' ? 'active' : '' %>">
+            Tambah Siswa
+        </a>
+
+        <a href="/login" class="logout-link">
+            Logout
+        </a>
+    </nav>
+</aside>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".menu-group").forEach(group => {
+            const arrow = group.querySelector(".arrow-box");
+            const link = group.querySelector(".menu-link");
+
+            // klik panah buat dropdown
+            arrow.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                group.classList.toggle("open");
+            });
+
+            // klik link datasiswa jangan ga kena dropdown
+            link.addEventListener("click", (e) => {
+                e.stopPropagation();
+            });
+        });
+    });
+</script>

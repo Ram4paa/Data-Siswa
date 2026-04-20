@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #ddeefa;
+}
+
+.content {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+/* container form */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* card form */
+.form-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;              
+    border-radius: 24px;
+    padding: 42px 48px;
+    padding-left: 56px;
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.08),
+        inset 0 1px 0 rgba(255,255,255,.7);
+    position: relative;
+}
+
+.form-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 8px;
+    border-radius: 24px 0 0 24px;
+    background: linear-gradient(#60a5fa);
+}
+
+/* header */
+.header {
+    margin-bottom: 30px;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.header p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 14px;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    background: #f8fafc;
+    transition: all .25s ease;
+    font-family: 'Poppins';
+}
+
+.dropdown-rombel {
+    position: relative;
+    margin-top: 0.3rem;
+}
+
+.dropdown-trigger {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border-radius: 14px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    color: #0f172a;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 18px;
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+    padding: 14px;
+    display: none;
+    z-index: 20;
+    min-width: 320px;
+}
+
+.dropdown-menu.active {
+    display: block;
+    width: 100%;
+}
+
+.dropdown-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 8px;
+}
+
+.nav-arrow {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    color: #1e293b;
+    cursor: pointer;
+    transition: 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-arrow:hover {
+    border-color: #60a5fa;
+    background: #eff6ff;
+}
+
+.page-label {
+    font-weight: 700;
+    color: #1e293b;
+    text-align: center;
+    flex: 1;
+}
+
+.rombel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.rombel-item {
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 16px 0;
+    text-align: center;
+    font-weight: 700;
+    color: #1e293b;
+    background: #f8fafc;
+    cursor: pointer;
+    transition: 0.2s ease;
+    min-height: 54px;
+}
+
+.rombel-item:hover,
+.rombel-item.active {
+    border-color: #2563eb;
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.rombel-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #e2e8f0;
+    background: #f8fafc;
+    color: #94a3b8;
+}
+
+.form-error {
+    margin-top: 4px;
+    color: #dc2626;
+    font-size: 12px;
+}
+
+.form-message {
+    color: #b91c1c;
+    font-size: 13px;
+    min-height: 1.2rem;
+    line-height: 1.4;
+}
+
+/* focus effect */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #4689db;
+    box-shadow: 0 0 0 4px rgba(96,165,250,.15);
+}
+
+/* textarea */
+.form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* full width */
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+/*action button */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    gap: 16px;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #a2c2f6, #5090df);
+    color: white;
+    border: none;
+    padding: 14px 38px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(59,130,246,.35);
+    transition: .3s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(59,130,246,.45);
+}
+
+/* Rombel yang sudah terpakai di database */
+.rombel-item.used {
+    background: #fee2e2; /* Merah sangat muda */
+    border-color: #fca5a5;
+    color: #b91c1c;
+}
+
+/* Rombel yang benar-benar terkunci (D, E, dst) */
+.rombel-item.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    filter: grayscale(1);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 24px;
+    }
+
+    .form-card {
+        padding: 32px;
+    }
+}
